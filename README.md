@@ -7,7 +7,6 @@
 ## 🚀 Quick Demo
 ```
 cd your-git-repo
-git add .          # Or let gitify stage for you
 gitify
 ```
 ```
@@ -15,6 +14,8 @@ Staging changes...
 Analyzing: src/main.js...
 Suggestion: \"Refactor authentication logic to use async/await\"
 Accept? (y/n): y
+Branch: [master, testbranch]
+Which branch are you pushing in? testbranch
 Pushing to origin/main... Success!
 ```
 
@@ -40,18 +41,10 @@ npm install -g git-ai-helper
 gitify  # Use anywhere!
 ```
 
-### Local Development
-```bash
-git clone <this-repo>
-cd Gitify
-npm install
-npm link  # Links global 'gitify'
-```
-
 ## ⚙️ Usage
 
 1. **Navigate to Git repo** (new or existing).
-2. **Make changes** (`git add .` optional).
+2. **Make changes**.
 3. **Run**:
    ```bash
    gitify
@@ -70,15 +63,6 @@ npm link  # Links global 'gitify'
 2. Proxy generates via **Gemini**: `"Summarize this code change in 1 professional sentence."`
 3. Returns clean message: e.g., `"Fix user profile validation edge case"`
 
-## 🖥️ Local Server (Optional—for Dev/Custom)
-```bash
-cd git-server
-npm install
-echo "GEMINI_API_KEY=your-key" > .env
-npm start  # http://localhost:3000
-```
-Update `aiService.js` SERVER_URL to `http://localhost:3000`.
-
 ## 📁 Project Structure
 ```
 Gitify-ai/              # Monorepo root
@@ -96,29 +80,26 @@ Gitify-ai/              # Monorepo root
 └── .gitignore
 ```
 
-## 🔧 Development
-```bash
-# Install both
-npm install --prefix Gitify
-npm install --prefix git-server
+## ⚙️ Setup & Installation
+1. Install the package globally via npm:
+   ```bash
+   npm install -g git-ai-helper
+   ```
+2. Navigate to your local git repository:
+   ```bash
+   cd your-project-folder
+   ```
+3. Run the tool to analyze changes and generate commits:
+   ```bash
+   gitify
+   ```
 
-# Link CLI globally
-npm link --prefix Gitify
-
-# Run server
-npm start --prefix git-server
-```
+#### NPM Package 👉 https://www.npmjs.com/package/git-ai-helper
 
 ## 📊 Stats
 - **Size**: ~50KB (CLI)
 - **Deps**: Minimal (simple-git, axios, dotenv)
 - **API**: Free tier Gemini (generous limits)
-
-## 🤝 Contributing
-1. Fork & clone.
-2. `npm link` in `/Gitify`.
-3. `gitify` → test changes instantly!
-4. PR to `main`.
 
 ## 📄 License
 ISC (see Gitify/package.json)
