@@ -1,5 +1,5 @@
 {
-  "name": "gitify",
+  "name": "git-ai-helper",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,12 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["git", "ai", "gemini", "automation", "cli", "commit-messages"],
+  "author": "Vandana",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
     "axios": "^1.14.0",
     "dotenv": "^17.4.0",
     "simple-git": "^3.33.0"
