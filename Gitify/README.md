@@ -1,62 +1,38 @@
-# git-ai-helper
+# 🤖 GIT-AI-HELPER
 
-AI-powered git commit messages for your daily workflow.
+A minimal, terminal-native CLI tool built with **Node.js**.  
+It allows users to automatically generate professional, one-sentence commit messages instantly based on code changes using AI.  
+Automates the git actions (add -> commit -> push) with a single comand while having a control over it.
 
-## Installation
+## ✨ Features
+- Generate atomic commit messages file-by-file  
+- Interactive prompts to accept, regenerate, or edit messages  
+- Auto-stages and auto-pushes to your remote repository  
+- Securely powered by a remote proxy server  
 
-Install globally via npm:
+## 🛠️ Tech Stack
+- **Node.js** (Runtime)  
+- **Simple-Git** (Git automation)  
+- **Axios** (API requests)  
+- **Gemini API** (AI integration)  
 
-```bash
-npm install -g git-ai-helper
-Usage
-Navigate to your project folder and run:
+## ⚙️ Setup & Installation
+1. Install the package globally via npm:
+   ```bash
+   npm install -g git-ai-helper
+   ```
+2. Navigate to your local git repository:
+   ```bash
+   cd your-project-folder
+   ```
+3. Run the tool to analyze changes and generate commits:
+   ```bash
+   gitify
+   ```
 
-Bash
-gitify
-Workflow
-Analyze: The tool stages changes and analyzes code diffs.
+#### NPM Package 👉 https://www.npmjs.com/package/git-ai-helper
 
-Review: Review the AI-generated commit message.
-
-Decide:
-
-y: Accept and commit
-
-n: Skip
-
-r: Regenerate suggestion
-
-m: Write manual message
-
-Push: Automatically pushes to your remote repository.
-
-Setup Requirements
-New Projects
-Run git init.
-
-Create a GitHub repository.
-
-Link it: git remote add origin <repo-link>
-
-Run gitify.
-
-Existing Projects
-Make code changes.
-
-Run gitify.
-
-Features
-Atomic Commits: Processes files individually for cleaner history.
-
-Interactive Control: Approve or edit every message.
-
-Cloud Powered: AI processing handled via remote proxy.
-
-Zero Config: Works immediately after installation.
-
-Prerequisites
-Git must be installed and initialized.
-
-A linked remote origin (GitHub/GitLab) is required for auto-push.
-
-Author: Jaany
+## 💡 Usage Requirements
+- **New Projects:** Run `git init`, add your GitHub remote (`git remote add origin <link>`), and run `gitify`.
+- **Cloned Projects:** Make your changes and simply run `gitify`.
+- **Note:** Git must be installed and initialized on your system.
