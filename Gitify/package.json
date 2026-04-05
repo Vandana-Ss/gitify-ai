@@ -1,6 +1,6 @@
 {
   "name": "git-ai-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["git", "ai", "gemini", "automation", "cli", "commit-messages"],
+  "keywords": [
+    "git",
+    "ai",
+    "gemini",
+    "automation",
+    "cli",
+    "commit-messages"
+  ],
   "author": "Vandana",
   "license": "ISC",
   "type": "commonjs",
