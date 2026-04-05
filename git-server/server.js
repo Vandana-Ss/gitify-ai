@@ -18,7 +18,7 @@ async function generateWithRetry(prompt, retries = 3) {
         } catch (err) {
             if (err.status === 503 && i < retries - 1) {
                 const waitTime = (i + 1) * 2000;
-                console.log(`⚠️ Gemini busy, retrying in ${waitTime/1000}s...`);
+                console.log(`Busy, retrying in ${waitTime/1000}s...`);
                 await new Promise(res => setTimeout(res, waitTime));
                 continue;
             }
@@ -26,6 +26,14 @@ async function generateWithRetry(prompt, retries = 3) {
         }
     }
 }
+
+app.get('/', (req, res) => {
+    res.send("Gitify officially LIVE in the cloud!");
+});
+
+app.get('/generate-commit', (req, res) => {
+    res.send("I'm here! I'm waiting for a POST request from your CLI.");
+});
 
 app.post('/generate-commit', async (req, res) => {
     const { diff, instruction } = req.body;
@@ -36,7 +44,7 @@ app.post('/generate-commit', async (req, res) => {
         const prompt = `${instruction}\nDiff: ${diff}\nReturn only a 1-sentence professional commit message.`;
         const commitMessage = await generateWithRetry(prompt);
         
-        console.log(`✅ Generated: ${commitMessage.substring(0, 30)}...`);
+        console.log(`Generated: ${commitMessage.substring(0, 30)}...`);
         res.json({ commitMessage });
     } catch (err) {
         console.error("Server Error:", err.message);
@@ -45,4 +53,4 @@ app.post('/generate-commit', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Gitify Guardian Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

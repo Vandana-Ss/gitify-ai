@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const SERVER_URL = 'http://localhost:3000/generate-commit';
+const SERVER_URL = 'https://gitify-ai.onrender.com/generate-commit';
 
 async function getAICommitMessage(diff, instruction) {
     try {
@@ -12,7 +12,7 @@ async function getAICommitMessage(diff, instruction) {
         return response.data.commitMessage;
         
     } catch (err) {
-        console.error("❌ Gitify Server Error:", err.response?.data?.error || err.message);
+        console.error("Gitify Server Error:", err.response?.data?.error || err.message);
         return "Manual commit message required (Server unreachable)";
     }
 }
