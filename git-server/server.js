@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 async function generateWithRetry(prompt, retries = 3) {
     for (let i = 0; i < retries; i++) {
@@ -36,6 +36,8 @@ app.get('/generate-commit', (req, res) => {
 });
 
 app.post('/generate-commit', async (req, res) => {
+    console.error("POST received:", req.body)
+    console.error("GEMINI_API_KEY exists:", !!process.env.GEMINI_API_KEY);
     const { diff, instruction } = req.body;
 
     if (!diff) return res.status(400).json({ error: "No diff provided" });
@@ -47,7 +49,7 @@ app.post('/generate-commit', async (req, res) => {
         console.log(`Generated: ${commitMessage.substring(0, 30)}...`);
         res.json({ commitMessage });
     } catch (err) {
-        console.error("Server Error:", err.message);
+        console.error("FULL Gemini ERROR:", err.status, err.message, err.cause)
         res.status(500).json({ error: "AI Service failed" });
     }
 });
